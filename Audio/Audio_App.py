@@ -19,7 +19,7 @@ option = st.radio(f":red[Choose option of Extract audio]", ("By Youtube video", 
 
 if option == "By Youtube video":
     video_url = st.text_input("Enter URL of video")
-    SAVE_PATH=""
+    # SAVE_PATH=""
     # SAVE_PATH = os.path.join(os.path.expanduser("~"), "Downloads")
     output_file = st.text_input("Enter the filename: ")
     if not output_file.endswith(".mp3"):
@@ -28,8 +28,10 @@ if option == "By Youtube video":
         if st.button("Extract Audio"):
             yt = YouTube(video_url)
             video_stream = yt.streams.filter(file_extension='mp4').get_audio_only()
-            video_stream.download(output_path=SAVE_PATH,filename=output_file)
-            audio_output_path = os.path.join(SAVE_PATH, output_file)
+            audio_file_path = os.path.join(output_path, '%(video_stream.title)s.mp3')
+            video_stream.download(audio_file_path)
+            # video_stream.download(output_path=SAVE_PATH,filename=output_file)
+            # audio_output_path = os.path.join(SAVE_PATH, output_file)
             st.success(f"Audio extracted and saved as {audio_output_path}")
     except Exception as e:
         st.warning("An error occurred during extraction.", e)
