@@ -19,7 +19,7 @@ option = st.radio(f":red[Choose option of Extract audio]", ("By Youtube video", 
 
 if option == "By Youtube video":
     video_url = st.text_input("Enter URL of video")
-    SAVE_PATH="C:/"
+    SAVE_PATH=""
     # SAVE_PATH = os.path.join(os.path.expanduser("~"), "Downloads")
     output_file = st.text_input("Enter the filename: ")
     if not output_file.endswith(".mp3"):
@@ -37,7 +37,7 @@ if option == "By Youtube video":
 else:
     st.subheader("Select the file")
     input_file = st.file_uploader("Upload a file",type=["mp4"])
-    downloads_path="C:/"
+    downloads_path=""
     # downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
     output_file = st.text_input("Enter the filename: ")
     if not output_file.endswith(".mp3"):
