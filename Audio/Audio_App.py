@@ -28,11 +28,12 @@ if option == "By Youtube video":
         if st.button("Extract Audio"):
             yt = YouTube(video_url)
             video_stream = yt.streams.filter(file_extension='mp4').get_audio_only()
-            audio_file_path = os.path.join(output_path, '%(video_stream.title)s.mp3')
-            video_stream.download(audio_file_path)
-            # video_stream.download(output_path=SAVE_PATH,filename=output_file)
+            # audio_file_path = os.path.join(output_path, '%(video_stream.title)s.mp3')
+            # video_stream.download(audio_file_path)
+            video_stream.download(output_path="/download/",filename=output_file)
+            st.success("Audio extracted")
             # audio_output_path = os.path.join(SAVE_PATH, output_file)
-            st.success(f"Audio extracted and saved as {audio_output_path}")
+            # st.success(f"Audio extracted and saved as {audio_output_path}")
     except Exception as e:
         st.warning("An error occurred during extraction.", e)
 
