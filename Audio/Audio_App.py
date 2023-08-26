@@ -35,7 +35,7 @@ if option == "By Youtube video":
             # audio_output_path = os.path.join(SAVE_PATH, output_file)
             # st.success(f"Audio extracted and saved as {audio_output_path}")
     except Exception as e:
-        st.warning("An error occurred during extraction.", e)
+        st.warning(f"An error occurred during extraction {e}")
 
 else:
     st.subheader("Select the file")
